@@ -5,10 +5,10 @@ class User {
         this.userLastName = sLastName;        
     }
 
-    /*
+
     greeting () {
-       alert( 'hola' + userName + ' ' + userLastName )       
-    }
-    */
+       alert('hola ' + greetingUser.userName + ' ' + greetingUser.userLastName )
 }
+};
+
 

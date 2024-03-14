@@ -1,48 +1,52 @@
-
 let userName;
 let lastName;
 
-userName = prompt('Bienvenido, ingrese su Nombre: ')
-lastName = prompt ('Apellido?')
+userName = prompt("Bienvenido, ingrese su Nombre: ");
+lastName = prompt("Apellido:");
 
-let greetingUser = new User (userName, lastName)
+let greetingUser = new User(userName, lastName);
 
-alert('hola ' +  greetingUser.userName + " " + greetingUser.userLastName) 
-
-// Quiero reemplazar el alert por el metodo greeting en userName.js //
-
-console.log(greetingUser)
-
+greetingUser.greeting();
 
 let option;
-let taskList = [];
+/*
+let addTask = (title) => {
+  title = prompt("Ingresar tarea");
 
-function addTask() {
-  taskList.push(prompt("ingresar tarea"));
-}
+  taskList.push({ title, id: Date.now(), completed: false });
+};
+console.log(taskList);
+*/
 
-function list() {
-  if (taskList.length === 0) {
-    alert("Nada por hacer.");
-  } else alert(`Listado de tareas: ${taskList}`);
-}
+let list = () =>  
+  this.taskList.forEach((task, idx) => {
+    console.log(`${idx + 1} - ${task.title}`)
+  });  
+
+
+const tManager = new TaskManager ();
+
+
 
 do {
   option = prompt(
-    "Seleccionar: \n1 - Ingresar tarea \n2 - Ver listado de tareas \n3 - salir"
+    "Seleccionar: \n1 - Ingresar tarea \n2 - Ver listado de tareas \n3 - Editar \n4 - Salir"
   );
 
   switch (option) {
     case "1":
-      addTask();
+      tManager.addTask()
       break;
     case "2":
-      list();
+      tManager.list()
       break;
     case "3":
+      list();
+      break;
+    case "4":
       false;
       break;
     default:
       alert("Ingrese una opcion valida");
   }
-} while (option != 3);
+} while (option != 4);
