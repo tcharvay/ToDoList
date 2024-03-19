@@ -9,24 +9,8 @@ let greetingUser = new User(userName, lastName);
 greetingUser.greeting();
 
 let option;
-/*
-let addTask = (title) => {
-  title = prompt("Ingresar tarea");
-
-  taskList.push({ title, id: Date.now(), completed: false });
-};
-console.log(taskList);
-*/
-
-let list = () =>  
-  this.taskList.forEach((task, idx) => {
-    console.log(`${idx + 1} - ${task.title}`)
-  });  
-
 
 const tManager = new TaskManager ();
-
-
 
 do {
   option = prompt(

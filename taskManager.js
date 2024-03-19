@@ -5,19 +5,24 @@ class TaskManager {
 
   addTask = () => {
     let title = prompt("Ingresar tarea");
-    this.taskList.push({ title, id: Date.now(), completed: false });
+    this.taskList.push({
+         title,
+         id: Date.now(),
+         completed: false, 
+        });
     console.log(this.taskList)
   };
 
   list = () => {
+
+    let sumTask = ('Listado de Tareas: \n')
+
     this.taskList.forEach((task, idx) => {
-    console.log(`${idx + 1} - ${task.title}`);
+    sumTask = (`${sumTask} \n ${idx + 1} - ${task.title}  `);
     });
+    alert(sumTask)
 }
 }
-
-
-
 
 /*
 let list = () => {
