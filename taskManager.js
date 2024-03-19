@@ -6,22 +6,47 @@ class TaskManager {
   addTask = () => {
     let title = prompt("Ingresar tarea");
     this.taskList.push({
-         title,
-         id: Date.now(),
-         completed: false, 
-        });
-    console.log(this.taskList)
+      title,
+      id: Date.now(),
+      completed: false,
+    });
+    console.log(this.taskList);
   };
 
   list = () => {
-
-    let sumTask = ('Listado de Tareas: \n')
+    if ( this.taskList.length === 0) {
+      alert ('Nada por hacer')
+    }else {
+    let sumTask = "Listado de Tareas: \n";
 
     this.taskList.forEach((task, idx) => {
-    sumTask = (`${sumTask} \n ${idx + 1} - ${task.title}  `);
+    sumTask = `${sumTask} \n ${idx + 1} - ${task.title}  `;
     });
-    alert(sumTask)
-}
+    alert(sumTask);
+  };
+  };
+
+  editTask = () => {
+    const n = prompt("Numero de tarea a editar?");
+
+    if (n <= this.taskList.length) {
+    const titleEditTask = prompt("Ingrese la nueva tarea: ");
+    const idxToEdit = (this.taskList[n - 1].title = titleEditTask);
+    }else{
+      alert('ingrese un numero valido');
+    }
+  };
+
+  deleteTask = () => {
+    const n = prompt("Numero de tarea a eliminar?");
+
+    if (n <= this.taskList.length) {
+      const idxToDelete = this.taskList.splice(n - 1, 1);
+    } else {
+      alert("ingrese un numero valido");
+      tManager.list()
+    }
+  };
 }
 
 /*

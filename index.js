@@ -14,7 +14,7 @@ const tManager = new TaskManager ();
 
 do {
   option = prompt(
-    "Seleccionar: \n1 - Ingresar tarea \n2 - Ver listado de tareas \n3 - Editar \n4 - Salir"
+    "Seleccionar: \n1 - Ingresar tarea \n2 - Ver listado de tareas \n3 - Editar \n4 - Eliminar \n5 - Salir"
   );
 
   switch (option) {
@@ -25,12 +25,15 @@ do {
       tManager.list()
       break;
     case "3":
-      list();
+      tManager.editTask();
       break;
     case "4":
+      tManager.deleteTask();
+      break;
+    case "5":
       false;
       break;
     default:
       alert("Ingrese una opcion valida");
   }
-} while (option != 4);
+} while (option != 5);
