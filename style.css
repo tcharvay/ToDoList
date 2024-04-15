@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+header {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: rgb(214, 51, 51);
+}
+
+header input {
+    text-align: center;
+}
+
+.main-container {
+    background-color: rgb(214, 51, 51);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-container h1 {
+    color: aliceblue;
+    margin: 5px;
+    text-align: center;
+}
+
+.main-container input {
+    width: 300px;
+    height: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-self: center;
+    border-width: 0;
+    
+}
+
+.main-container button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border-color: none;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    background-color:aliceblue;
+    font-weight:700; 
+    border-width: 0;        
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.menu .menu-options {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(104, 104, 104);
+    width: 600px;
+    height: 25px;   
+}
+
+.menu .menu-options a:link { 
+    text-decoration: none; 
+    color:aliceblue;
+  } 
+
+.actions {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+}
+
+.tasks-Table{
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: rgb(146, 146, 145);
+    width: 600px;
+
+}
+
+.task-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.table-body{
+ 
+    background-color: rgb(214, 214, 214);
+
+}
+
+.new-row{
+    height: 42px;
+}
+
+.cell-task {
+    padding-left: 10px;
+}
+
+.task-title {
+    padding-left: 10px;
+}
+
+
+.table-footer {
+   background-color: rgb(104, 104, 104);
+   height: 8px;
+}
+
+.btn-warning {
+ margin: 5px 5px 3px 5px;
+}
+
+
+
+/* Add strike out text */
+.striked{
+    text-decoration: line-through;
+    padding-left: 10px;
+}
+
+.btn-block {
+    background-color: grey;
+    border-bottom-color: grey;
+
+}
+
+.btn-block:hover {
+    background-color: grey;
+    border-bottom-color: grey;
+
+}
