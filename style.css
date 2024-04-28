@@ -15,6 +15,10 @@ header input {
     text-align: center;
 }
 
+body {
+    background-color: rgb(240, 227, 223);
+}
+
 .main-container {
     background-color: rgb(214, 51, 51);
     padding: 15px;
@@ -124,6 +128,18 @@ header input {
  margin: 5px 5px 3px 5px;
 }
 
+.menu-options a{
+    color: white;
+}
+
+/* Edit pop-up */
+
+.swal2-confirm swal2-styled {
+    background-color: green;
+    color: green;
+}
+
+
 
 
 /* Add strike out text */
@@ -141,5 +157,33 @@ header input {
 .btn-block:hover {
     background-color: grey;
     border-bottom-color: grey;
+
+}
+
+
+@media(max-width :600px) {
+
+    .main-container {
+        background-color: rgb(214, 51, 51);
+        padding: 15px;
+        display: inline-block;
+        justify-content: space-between;
+    }
+
+
+    .main-container button {
+        display: flex;
+        height: 30px;
+        width: 300px;
+        border-radius: 5px;
+        border-color: none;
+        margin: 20px;
+        justify-content: center;
+        background-color:aliceblue;
+        font-weight:700;
+        text-align:center;
+        align-items: center;     
+    }
+    
 
 }

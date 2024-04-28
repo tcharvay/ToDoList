@@ -1,6 +1,7 @@
-// poner un strikethrogh en el task que esta completado
+
 // Poner filtro en estado completed, una vez que este completed que el boton no funcione mas.
-// usar sweetalert para el edit, me dice algo de asincoronia???
+
+
 
 let taskListStorage = localStorage.getItem("taskList");
 taskListStorage = JSON.parse(taskListStorage); // Restore as an array with objects
@@ -52,7 +53,15 @@ function displayTasks(filteredTasks = null) {
     let newRow = tableBody.insertRow();
     newRow.className = "new-row";
     let cellTask = newRow.insertCell();
-    cellTask.className = "cell-task ";
+     function cellTaskClassName ()  {
+
+    if (tasksArray[index].status) {
+      cellTask.className ="striked"
+    }else{ cellTask.className = "cell-task "}
+    }
+
+    cellTaskClassName()
+
     cellTask.textContent = task.name;
 
     let cellActions = newRow.insertCell();
@@ -105,19 +114,86 @@ function displayTasks(filteredTasks = null) {
     editButton.textContent = "Edit";
     editButton.className = "btn btn-warning";
     editButton.addEventListener("click", function editPrompt() {
-      let editedTask = prompt(
-        "Editing: " + ' " ' + task.name + ' " ' + ". Type task:"
-      );
-      tasksArray[index].name = editedTask;
+
+      async function showMessage() {
+        const { value: text } = await Swal.fire({
+          input: "textarea",
+          inputLabel: "",
+          inputPlaceholder: "Type your task here...",
+          inputAttributes: {
+            "aria-label": "Type your message here"
+          },
+          showCancelButton: true
+        });
+      
+        if (text) {
+          await ( tasksArray[index].name = text);
+          displayTasks(filteredTasks);
+        }
+      }      
+      // Call the async function
+      showMessage();
+      
       displayTasks(filteredTasks);
     });
     cellActions.appendChild(editButton);
+   
+
+    
+    /* una function que > 
+     IF status es false, crear el boton, todo como esta... , 
+     else eliminar remove() 
+          
+    function createCompletedBtn () {
+      if ( tasksArray[index].status = false ) {
+        let completedButton = document.createElement("button");
+        completedButton.textContent = "Completed";
+        completedButton.className = "btn btn-success";
+        
+        completedButton.addEventListener("click", function () {
+    
+    
+    
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Completed",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // Toggle the status of the task
+          tasksArray[index].status = !tasksArray[index].status;    
+    
+    
+          displayTasks(filteredTasks);
+        
+        });
+    
+        cellActions.appendChild(completedButton);
+    
+        localStorage.setItem("taskList", JSON.stringify(tasksArray));
+      }
+      else {
+        let removeBtn = document.getElementsByClassName('btn btn-success')
+        removeBtn.remove();
+       }
+
+    }
+
+    createCompletedBtn();
+
+     */
 
 
+    
     let completedButton = document.createElement("button");
     completedButton.textContent = "Completed";
     completedButton.className = "btn btn-success";
+    
     completedButton.addEventListener("click", function () {
+
+
+
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -126,88 +202,23 @@ function displayTasks(filteredTasks = null) {
         timer: 1500,
       });
       // Toggle the status of the task
-      tasksArray[index].status = !tasksArray[index].status;
+      tasksArray[index].status = !tasksArray[index].status;    
 
 
-      // Add strikethrough and re-render row
-
-      /*
-
-      if (tasksArray[index].status) {
-
-        tasksArray.splice(index, 1);
-        displayTasks(filteredTasks);
-              
-        let newRow = tableBody.insertRow();
-        newRow.className = "new-row";
-        let cellTask = newRow.insertCell();
-        cellTask.className = "striked";
-        cellTask.textContent = task.name;
-
-        console.log(cellTask.textContent)
-
-        let completedTask = {
-            name: task.name,
-            status: true,
-          };
-
-        tasksArray.push(completedTask);
-
-
-
-
-
-        let cellActions = newRow.insertCell();
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.className = "btn btn-danger";
-        deleteButton.addEventListener("click", function () {
-        function deleteAlert() {
-        const swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: "btn btn-success",
-            cancelButton: "btn btn-danger",
-          },
-          buttonsStyling: false,
-        });
-        swalWithBootstrapButtons
-          .fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            reverseButtons: true,
-          })
-          .then((result) => {
-            if (result.isConfirmed) {
-              swalWithBootstrapButtons.fire({
-                title: "Deleted!",
-                text: "Your task has been deleted.",
-                icon: "success",
-              });
-              tasksArray.splice(index, 1);
-              displayTasks(filteredTasks);
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-              swalWithBootstrapButtons.fire({
-                title: "Cancelled",
-                text: "Your task has not been deleted",
-                icon: "error",
-              });
-              displayTasks(filteredTasks);
-            }
-          });
-      }
-      deleteAlert();
+      displayTasks(filteredTasks);
+    
     });
-    cellActions.appendChild(deleteButton);
-        }; */
-    });
+
     cellActions.appendChild(completedButton);
 
     localStorage.setItem("taskList", JSON.stringify(tasksArray));
+
+
+    
   });
+
+  
+
   console.log(tasksArray);
 }
 // displayTasks initially to populate the table with existing tasks
