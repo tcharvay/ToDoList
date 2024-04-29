@@ -1,4 +1,7 @@
 // Poner filtro en estado completed, una vez que este completed que el boton no funcione mas.
+// max cantidad de texto de la tarea
+// gps para el weather
+
 
 let taskListStorage = localStorage.getItem("taskList");
 taskListStorage = JSON.parse(taskListStorage); // Restore as an array with objects
@@ -62,9 +65,12 @@ function displayTasks(filteredTasks = null) {
     cellTask.textContent = task.name;
 
     let cellActions = newRow.insertCell();
+    cellActions.className = "cell-actions";
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
-    deleteButton.className = "btn btn-danger";
+    deleteButton.className = "btn btn-danger"; 
+
+
     deleteButton.addEventListener("click", function () {
       function deleteAlert() {
         const swalWithBootstrapButtons = Swal.mixin({
@@ -134,53 +140,17 @@ function displayTasks(filteredTasks = null) {
     });
     cellActions.appendChild(editButton);
 
-    /*una function que > 
-     IF status es false, crear el boton, todo como esta... , 
-     else eliminar remove()  
-          
-    function createCompletedBtn () {
-      if ( tasksArray[index].status ) {
-        let removeBtn = document.getElementsByClassName('btn btn-success')
-        removeBtn.remove();
-
-      } else {
-        let completedButton = document.createElement("button");
-        completedButton.textContent = "Completed";
-        completedButton.className = "btn btn-success";
-        
-        completedButton.addEventListener("click", function () {
-    
-    
-    
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Completed",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          // Toggle the status of the task
-          tasksArray[index].status = !tasksArray[index].status;    
-    
-    
-          displayTasks(filteredTasks);
-        
-        });
-    
-        cellActions.appendChild(completedButton);
-    
-        localStorage.setItem("taskList", JSON.stringify(tasksArray));
-      }
-
-    }
-
-    createCompletedBtn();
-
-    */
-
     let completedButton = document.createElement("button");
     completedButton.textContent = "Completed";
-    completedButton.className = "btn btn-success";
+
+    function completedBtnClassName() {
+      if (tasksArray[index].status) {
+        completedButton.className = "btn-block";
+      } else {
+        completedButton.className = "btn btn-success";
+      }
+    }
+    completedBtnClassName();
 
     completedButton.addEventListener("click", function () {
       Swal.fire({

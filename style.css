@@ -19,6 +19,11 @@ header input {
   text-align: center;
 }
 
+header input:hover {
+    border-color: black;
+    border-width: 1px;
+  }
+
 body {
   background-color: var(--mainBackground);
 }
@@ -47,7 +52,7 @@ body {
   border-width: 0;
 }
 
-.main-container button {
+.add-btn {
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -62,6 +67,12 @@ body {
   font-weight: 700;
   border-width: 0;
 }
+
+.add-btn:hover {
+    border-color: black;
+    border-width: 1px;
+  }
+
 
 .menu {
   display: flex;
@@ -122,9 +133,17 @@ body {
   height: 8px;
 }
 
+.btn-danger {
+    margin: 5px 0px 3px 0px;
+  }
+
 .btn-warning {
   margin: 5px 5px 3px 5px;
 }
+
+.btn-success {
+    margin: 5px 0px 3px 0px;
+  }
 
 .menu-options a {
   color: white;
@@ -144,13 +163,7 @@ body {
 }
 
 .btn-block {
-  background-color: grey;
-  border-bottom-color: grey;
-}
-
-.btn-block:hover {
-  background-color: grey;
-  border-bottom-color: grey;
+ display: none;
 }
 
 /* ------- WEATHER -------------------------------------------------------------------------------------- */
@@ -201,6 +214,11 @@ body {
   text-align: center;
 }
 
+.cityInput:hover {
+border-color: black;
+border-width: 1px;
+}
+
 .weather-btn {
   height: 35px;
   width: 120px;
@@ -211,6 +229,11 @@ body {
   text-align: center;
   background-color: aliceblue;
   font-weight: 700;
+}
+
+.weather-btn:hover {
+border-color: black;
+border-width: 1px;
 }
 
 .cityDisplay {
@@ -250,17 +273,19 @@ body {
   margin-left: 50px;
 }
 
-.prueba {
-  display: flex;
-  justify-content: center;
+footer {
+    background-color: black;
+    height: 1px;
 }
 
-/* MEDIA */
+
+/*------MEDIA----------------------------------------------------------------------------- */
 
 @media (max-width: 600px) {
   .main-container {
     background-color: var(--red);
-    padding: 15px;
+    margin: 0px;
+    padding: 0px;
     display: inline-block;
     justify-content: space-between;
   }
@@ -271,17 +296,109 @@ body {
     width: 300px;
     border-radius: 5px;
     border-color: none;
-    margin: 20px;
+    margin: 10px 20px;
     justify-content: center;
     background-color: aliceblue;
     font-weight: 700;
     text-align: center;
     align-items: center;
   }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 25px;
+  }
+
+  .btn-success {
+    height: 20px;
+    border-radius: 20%;
+    text-indent: -9999px;
+    line-height: 0; 
+    padding: 5px;
+    padding-top: 2px;
+  }
+
+  .btn-success::after {
+    font-size: 10px;
+    font-weight: bold;
+    content: "OK";
+    text-indent: 0;
+    display: block;
+    line-height: initial;
+    color: white;
+  }
+
+   .btn-warning {
+    height: 20px;
+    border-radius: 20%;
+    text-indent: -9999px;
+    line-height: 0; 
+    padding: 5px;
+    padding-top: 1px;
+  }
+
+  .btn-warning::after {
+    font-size: 12px;
+    font-weight: bold;
+    content: "Ed";
+    text-indent: 0;
+    display: block;
+    line-height: initial;
+    color: rgb(0, 0, 0);
+  }
+
+  .btn-danger {
+    height: 20px;
+    border-radius: 20%;
+    text-indent: -9999px;
+    line-height: 0; 
+    padding: 8px;
+    padding-top: 1px;
+
+  }
+
+ .btn-danger::after {
+    font-size: 12px;
+    font-weight: bold;
+    content: "X";
+    text-indent: 0;
+    display: block;
+    line-height: initial;
+    color: white;
+  }
+
+  .cell-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    margin: 8px 10px 0px 0px;
+    
+
+  }
+
+  .tempDisplay {
+    width: 80px;
+    font-weight: bolder;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .humidityDisplay {
+    width: 110px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  .descDisplay {
+    width: 120px;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+  }
 }
 
 
-footer {
-    background-color: black;
-    height: 1px;
-}
