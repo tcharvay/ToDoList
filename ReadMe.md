@@ -1,14 +1,12 @@
-Projecto para curso de JS de Coderhouse
+Project for JS course of Coderhouse.
 
-Descripcion
+Description:
 
-Es un to do list al que se le pueden agregar, editar o eliminar tareas.
+To do list that its possible to add, delete or edit tasks.
 
-Se puede filtrar todas las tareas, las pendientes y las completadas.
+Lenguajes : HTML - CSS - JS
 
-Lenguajes utilizados: HTML - CSS - JS
-
-Librerias: SweetAlert2
+Library: https://sweetalert2.github.io/
 
 API: https://openweathermap.org/
 

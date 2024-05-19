@@ -20,13 +20,7 @@
             <button class="add-btn" onclick="addTask()">Add</button>
         </div>
     </header>
-    <div class="menu">
-        <div class="menu-options">
-            <a href="#" id="showAll">All Tasks</a>
-            <a href="#" id="showPending">Pending</a>
-            <a href="#" id="showCompleted">Completed</a>
-        </div>
-    </div>
+
     <div class="task-container">
         <table id="tasksTable" class="tasks-Table">
             <thead>
@@ -36,7 +30,6 @@
                 </tr>
             </thead>
             <tbody class="table-body">
-                <!-- Tasks will be added here dynamically -->
             </tbody>
             <tfoot>
                 <tr class="table-footer">
@@ -49,31 +42,25 @@
     <section class="weather">
         <div class="weather-container">
             <form class="weatherForm">
-       
+
                 <input type="text" class="cityInput" placeholder="Enter City">
                 <button class='weather-btn' type="submit">Get Weather</button>
-                </form>
-            
-                
-                <div class="card" style="display: none;">
-                    <!-- TWeather will be added here -->
-                </div> 
-                <div class="card2" style="display: none;">
-                    <!-- TWeather will be added here -->
-                </div>     
+            </form>
+
+
+            <div class="card" style="display: none;">
+            </div>
+            <div class="card2" style="display: none;">
+            </div>
             </form>
         </div>
     </section>
     <footer>
-
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    
     <script src="./index.js"></script>
 
 </body>

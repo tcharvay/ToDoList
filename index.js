@@ -1,42 +1,28 @@
-// Poner filtro en estado completed, una vez que este completed que el boton no funcione mas.
-// max cantidad de texto de la tarea
-// gps para el weather
-
-
 let taskListStorage = localStorage.getItem("taskList");
-taskListStorage = JSON.parse(taskListStorage); // Restore as an array with objects
+taskListStorage = JSON.parse(taskListStorage);
 console.log(taskListStorage);
 
-// Array to store tasks //
 let tasksArray = [];
 
-// If storage has content push to array tasklist//
 if (localStorage.getItem("taskList")) {
-  // Retrieve the array from local storage
-  var storedArray = JSON.parse(localStorage.getItem("taskList"));
+  let storedArray = JSON.parse(localStorage.getItem("taskList"));
 
-  // Copy the content from the stored array to the new array
   tasksArray = storedArray.slice();
-} else {
-}
-console.log(tasksArray);
+} else {};
 
-// Function to add a new task
 function addTask() {
   let taskInput = document.getElementById("taskInput");
   let taskName = taskInput.value.trim().toLowerCase();
 
   if (taskName !== "") {
-    // Create a task object and add it to the tasksArray
     let newTask = {
       name: taskName,
       status: false,
     };
     tasksArray.push(newTask);
-    // Add the task to the table
+
     displayTasks();
 
-    // Clear the input field after adding the task
     taskInput.value = "";
 
     console.log(tasksArray);
@@ -45,7 +31,7 @@ function addTask() {
 
 function displayTasks(filteredTasks = null) {
   let tableBody = document.querySelector("#tasksTable tbody");
-  tableBody.innerHTML = ""; // Clear the table before re-populating
+  tableBody.innerHTML = "";
 
   let tasks = filteredTasks ? filteredTasks : tasksArray;
 
@@ -68,8 +54,7 @@ function displayTasks(filteredTasks = null) {
     cellActions.className = "cell-actions";
     let deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
-    deleteButton.className = "btn btn-danger"; 
-
+    deleteButton.className = "btn btn-danger";
 
     deleteButton.addEventListener("click", function () {
       function deleteAlert() {
@@ -133,7 +118,7 @@ function displayTasks(filteredTasks = null) {
           displayTasks(filteredTasks);
         }
       }
-      // Call the async function
+
       showMessage();
 
       displayTasks(filteredTasks);
@@ -160,7 +145,7 @@ function displayTasks(filteredTasks = null) {
         showConfirmButton: false,
         timer: 1500,
       });
-      // Toggle the status of the task
+
       tasksArray[index].status = !tasksArray[index].status;
 
       displayTasks(filteredTasks);
@@ -173,61 +158,22 @@ function displayTasks(filteredTasks = null) {
 
   console.log(tasksArray);
 }
-// displayTasks initially to populate the table with existing tasks
+
 displayTasks();
 
-/*------EVENT LISTENERS------------------------------------------------------------------------------*/
-
-// Event listener to show completed tasks
-document
-  .getElementById("showCompleted")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default behavior of link
-    displayCompletedTasks();
-  });
-
-// Event listener to show pending tasks
-document
-  .getElementById("showPending")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // Prevent default behavior of link
-    displayPendingTasks();
-  });
-
-// Event listener to show all tasks
-document.getElementById("showAll").addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent default behavior of link
-  displayAllTasks();
-});
-
-// Event listener to clear the list
-/*
-    document.getElementById("clear").addEventListener("click", function() {
-        tasksArray = []; // Empty the tasks array
-        displayTasks(); // Update the display
-    });
-    */
-
-/*------DISPLAY FUNCTIONS----------------------------------------------------------------------------*/
-
-// Function to display completed tasks
 function displayCompletedTasks() {
   let completedTasks = tasksArray.filter((task) => task.status);
   displayTasks(completedTasks);
 }
 
-// Function to display pending tasks
 function displayPendingTasks() {
   let pendingTasks = tasksArray.filter((task) => !task.status);
   displayTasks(pendingTasks);
 }
 
-// Function to display all tasks
 function displayAllTasks() {
   displayTasks(tasksArray);
 }
-
-/*-----DISPLAY WEATHER----------------------------------------------------------------------------*/
 
 const weatherForm = document.querySelector(".weatherForm");
 const cityInput = document.querySelector(".cityInput");
@@ -268,20 +214,18 @@ async function getWeatherData(city) {
 function displayWeatherInfo(data) {
   console.log(data);
 
-  /*destructuring */
   const {
     name: city,
     main: { temp, humidity },
     weather: [{ description, id }],
-    } = data;
-
+  } = data;
 
   card.textContent = "";
   card.style.display = "";
   card2.textContent = "";
   card2.style.display = "";
 
-  const cityDisplay = document.createElement("h2"); 
+  const cityDisplay = document.createElement("h2");
   const tempDisplay = document.createElement("p");
   const humidityDisplay = document.createElement("p");
   const descDisplay = document.createElement("p");
@@ -295,40 +239,35 @@ function displayWeatherInfo(data) {
 
   cityDisplay.classList.add("cityDisplay");
   tempDisplay.classList.add("tempDisplay");
-  humidityDisplay.classList.add('humidityDisplay');
-  descDisplay.classList.add('descDisplay');
-  weatherEmoji.classList.add('weatherEmoji');
+  humidityDisplay.classList.add("humidityDisplay");
+  descDisplay.classList.add("descDisplay");
+  weatherEmoji.classList.add("weatherEmoji");
 
   card.appendChild(cityDisplay);
   card.appendChild(weatherEmoji);
   card2.appendChild(tempDisplay);
   card2.appendChild(humidityDisplay);
   card2.appendChild(descDisplay);
-
-
-
-
 }
 
 function getWeatherEmoji(weatherId) {
-
-  switch(true){
-    case( weatherId >= 200 && weatherId <300):
-      return '⛈️'; 
-    case( weatherId >= 300 && weatherId <400): 
-      return '🌧️';
-    case( weatherId >= 500 && weatherId <600): 
-      return '🌧️';
-    case( weatherId >= 600 && weatherId <700): 
-      return '❄️';
-    case( weatherId >= 700 && weatherId <800): 
-      return '💭';
-    case( weatherId === 800): 
-      return '☀️';
-    case( weatherId >= 801 && weatherId <810): 
-      return '☁️';  
+  switch (true) {
+    case weatherId >= 200 && weatherId < 300:
+      return "⛈️";
+    case weatherId >= 300 && weatherId < 400:
+      return "🌧️";
+    case weatherId >= 500 && weatherId < 600:
+      return "🌧️";
+    case weatherId >= 600 && weatherId < 700:
+      return "❄️";
+    case weatherId >= 700 && weatherId < 800:
+      return "💭";
+    case weatherId === 800:
+      return "☀️";
+    case weatherId >= 801 && weatherId < 810:
+      return "☁️";
     default:
-      return '🛸';
+      return "🛸";
   }
 }
 
@@ -341,6 +280,3 @@ function displayError(message) {
   card.style.display = "flex";
   card.appendChild(errorDisplay);
 }
-
-
-
